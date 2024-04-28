@@ -14,7 +14,7 @@ public class Team {
 
     private String name;
 
-    @OneToMany(mappedBy = "team", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "team")
     private List<Member> members = new ArrayList<Member>();
 
     public Team() {}
@@ -27,5 +27,12 @@ public class Team {
         this.id = id;
         this.name = name;
         this.members = new ArrayList<>();
+    }
+
+    public void addMember(Member member){
+        this.members.add(member);
+        if(member.getTeam() != this){
+            member.setTeam(this);
+        }
     }
 }
