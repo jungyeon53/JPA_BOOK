@@ -9,7 +9,12 @@ import java.util.List;
 
 @Entity
 @Table(name = "MEMBER", uniqueConstraints = {@UniqueConstraint(name = "NAME_AGE_UNIQUE", columnNames = {"NAME", "AGE"})})
-public class Member {
+
+@AttributeOverrides({
+        @AttributeOverride(name = "id", column = @Column(name = "MEMBER_ID")),
+        @AttributeOverride(name = "name", column = @Column(name = "MEMBER_NAME"))
+})
+public class Member extends BasicEntity{
 
     @Id
     @Column(name = "ID")
