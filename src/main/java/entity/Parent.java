@@ -1,9 +1,6 @@
 package entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.IdClass;
+import javax.persistence.*;
 
 @Entity
 public class Parent {
@@ -12,6 +9,13 @@ public class Parent {
     @Column(name = "PARENT_ID")
     private String id;
     private String name;
+
+    @OneToOne
+    @JoinTable(name = "PARENT_CHILD",
+            joinColumns = @JoinColumn(name = "PARENT_ID"),
+            inverseJoinColumns = @JoinColumn(name = "CHILD_ID")
+    )
+    private Child child;
 
     public void setId(String id) {
         this.id = id;

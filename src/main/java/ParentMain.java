@@ -22,8 +22,8 @@ public class ParentMain {
             tx.begin(); // 트랜잭션 시작
 
             Parent parent = new Parent();
-            parent.setId1("myId1");
-            parent.setId2("myId2");
+//            parent.setId1("myId1");
+//            parent.setId2("myId2");
             parent.setName("parentName");
             em.persist(parent);
             tx.commit();

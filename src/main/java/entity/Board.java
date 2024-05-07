@@ -3,10 +3,9 @@ package entity;
 import javax.persistence.*;
 
 @Entity
-@TableGenerator(
-        name = "BOARD_SEQ_GENERATOR",
-        table = "MY_SEQUENCES",
-        pkColumnValue = "BOARD_SEQ", allocationSize = 1
+@Table(name = "BOARD")
+@SecondaryTable(name = "BOARD_DETAIL",
+    pkJoinColumns = @PrimaryKeyJoinColumn(name = "BOARD_DETAIL_ID")
 )
 public class Board {
 
@@ -14,4 +13,8 @@ public class Board {
     @GeneratedValue(strategy = GenerationType.TABLE,
                     generator = "BOARD_SEQ_GENERATOR")
     private Long id;
+
+    private String title;
+   @Column(table = "BOARD_DETAIL")
+    private String content;
 }

@@ -3,12 +3,12 @@ package entity;
 import javax.persistence.*;
 
 @Entity
-@IdClass(ChildId.class)
 public class Child {
 
-    @Id
-    @ManyToOne
-    @JoinColumn(name = "PARENT_ID")
+    @EmbeddedId
+    private ChildId id;
+
+    @OneToOne(mappedBy = "child")
     public Parent parent;
 
     @Id
